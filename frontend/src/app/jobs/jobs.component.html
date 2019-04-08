@@ -1,0 +1,81 @@
+<!doctype html>
+
+<!-- ASSIGN OUR ANGULAR MODULE -->
+<html>
+<head>
+    <!-- META -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Optimize mobile viewport -->
+
+    <title>Find a job!</title>
+
+    <!-- SCROLLS -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+    <style>
+        html                    { overflow-y:scroll; }
+        body                    { padding-top:50px; }
+        #todo-list              { margin-bottom:30px; }
+    </style>
+
+    <!-- SPELLS -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script><!-- load angular -->
+    <script src="core.js"></script>
+
+
+    <!--  material desing-->
+    <link rel = "stylesheet"
+         href = "https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+      <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+      <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+      <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+      <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+      <script src = "https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+      <link rel = "stylesheet" href = "https://fonts.googleapis.com/icon?family=Material+Icons">
+
+      <script language = "javascript">
+         angular
+            .module('firstApplication', ['ngMaterial'])
+            .controller('cardController', cardController);
+
+         function cardController ($scope) {
+         }
+      </script>
+
+
+</head>
+<!-- SET THE CONTROLLER AND GET ALL TODOS -->
+<body ng-controller="mainController">
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h1>Jobs found for you!</h1>
+        </div>
+
+         <!-- LOOP OVER THE job -->
+         <div class="jobs_collection">
+
+            <mat-accordion multi="true" *ngIf="jobs.length > 0">
+                <mat-expansion-panel *ngFor="let job of jobs">
+                  <mat-expansion-panel-header>
+                    {{ job.title }}
+                  </mat-expansion-panel-header>
+                  <p>Location : {{ job.location }}</p>
+                  <p>Category : {{ job.category }}</p>
+                  <p>Salary : {{ job.salary }}</p>
+                  <p>Job Type : {{ job.job_type }}</p>
+                  <p>Deadline : {{ job.deadline }}</p>
+                  <button mat-button color="primary"><a href={{job.url}} target="_blank">View Job</a></button>
+
+                  <mat-action-row>
+                  </mat-action-row>
+                </mat-expansion-panel>
+              </mat-accordion>
+              <!-- <p class="info-text mat-body-1" *ngIf="jobs.length <= 0">No posts added yet!</p> -->
+
+
+
+        </div>
+</div>
+
+</body>
+</html>
